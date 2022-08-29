@@ -28,8 +28,6 @@ type CardProps = {
 };
 
 const Card: React.FC<CardProps> = ({ pokemons }) => {
-  console.log(pokemons);
-
   return (
     <div className="card-container">
       {pokemons.length > 0 ? (
