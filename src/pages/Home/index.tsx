@@ -1,7 +1,11 @@
-import React from "react";
+import Navbar from "../../components/Navbar";
 
 const Home = () => {
-  return <h2>pokedex</h2>;
+  return (
+    <>
+      <Navbar />
+    </>
+  );
 };
 
 export default Home;
