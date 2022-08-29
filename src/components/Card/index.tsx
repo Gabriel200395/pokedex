@@ -24,6 +24,8 @@ const Card: React.FC<CardProps> = ({ pokemons }) => {
     <div className="card-container">
       {pokemons?.map((pokemon) => (
         <div className="c-card" key={pokemon.id}>
+          <p className="card-pokemon-id">#{pokemon.id}</p>
+
           <div className="card-img">
             <img
               src={pokemon.sprites.other.dream_world.front_default}
