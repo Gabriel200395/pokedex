@@ -14,6 +14,14 @@ interface PropsPokemonApi {
       };
     };
   };
+  types: [
+    {
+      slot: number;
+      type: {
+        name: string;
+      };
+    }
+  ];
 }
 
 const Home = () => {

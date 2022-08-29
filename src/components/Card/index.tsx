@@ -1,5 +1,6 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import "./styles.css";
+import { ColorRing } from "react-loader-spinner";
 
 type ObjPokemon = {
   name: string;
@@ -12,6 +13,14 @@ type ObjPokemon = {
       };
     };
   };
+  types: [
+    {
+      slot: number;
+      type: {
+        name: string;
+      };
+    }
+  ];
 };
 
 type CardProps = {
@@ -19,22 +28,41 @@ type CardProps = {
 };
 
 const Card: React.FC<CardProps> = ({ pokemons }) => {
+  console.log(pokemons);
+
   return (
     <div className="card-container">
-      {pokemons?.map((pokemon) => (
-        <div className="c-card" key={pokemon.id}>
-          <p className="card-pokemon-id">#{pokemon.id}</p>
+      {pokemons.length > 0 ? (
+        <>
+          {pokemons?.map((pokemon) => (
+            <div
+              className={`c-card ${pokemon.types[0].type.name}`}
+              key={pokemon.id}
+            >
+              <p className="card-pokemon-id">#{pokemon.id}</p>
 
-          <div className="card-img">
-            <img
-              src={pokemon.sprites.other.dream_world.front_default}
-              alt={pokemon.sprites.other.dream_world.front_default}
-            />
-          </div>
+              <div className="card-img">
+                <img
+                  src={pokemon.sprites.other.dream_world.front_default}
+                  alt={pokemon.sprites.other.dream_world.front_default}
+                />
+              </div>
 
-          <p className="card-name">{pokemon.name}</p>
-        </div>
-      ))}
+              <p className="card-name">{pokemon.name}</p>
+            </div>
+          ))}
+        </>
+      ) : (
+        <ColorRing
+          visible={true}
+          height="400"
+          width="100"
+          ariaLabel="blocks-loading"
+          wrapperStyle={{}}
+          wrapperClass="blocks-wrapper"
+          colors={["#263238", "#263238", "#263238", "#263238", "#263238"]}
+        />
+      )}
     </div>
   );
 };
