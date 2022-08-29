@@ -1,13 +1,14 @@
 import React from "react";
-
-// import { Container } from './styles';
+import "./styles.css";
+import Logo from "../../assets/img/pokemon-logo.png";
 
 const Navbar: React.FC = () => {
   return (
     <nav className="c-navbar">
-      <h2>logo</h2>
+      <img src={Logo} alt={Logo}/>
       <div>
         <input />
+        <i className="fas fa-search"></i>
       </div>
     </nav>
   );
