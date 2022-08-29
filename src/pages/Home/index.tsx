@@ -1,23 +1,26 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, ChangeEvent } from "react";
 import Card from "../../components/Card";
 import Navbar from "../../components/Navbar";
 
-interface PropsPokenApi {
+interface PropsPokemonApi {
   name: string;
   id: number;
   order: number;
   sprites: {
     other: {
       dream_world: {
-        front_default: string
-      }
-    }
-  }
+        front_default: string;
+      };
+    };
+  };
 }
 
 const Home = () => {
-  const [pokemonAll, setPokemonAll] = useState<PropsPokenApi[]>([]);
+  const [pokemonAll, setPokemonAll] = useState<PropsPokemonApi[]>([]);
+  const [pokemonFilter, setPokemonFilter] = useState<PropsPokemonApi[]>([]);
+
+  const [pokemonValue, setPokemonValue] = useState("");
 
   useEffect(() => {
     async function pokemonApiAll() {
@@ -33,6 +36,7 @@ const Home = () => {
 
         const response = pokemonData.map((i) => i.data);
         setPokemonAll([...pokemonAll, ...response]);
+        setPokemonFilter([...pokemonAll, ...response]);
       } catch (error) {
         console.log(error);
       }
@@ -41,10 +45,21 @@ const Home = () => {
     pokemonApiAll();
   }, []);
 
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPokemonValue(e.target.value);
+    const pokemon = pokemonAll.filter((pokemon) =>
+      pokemon.name
+        .toLocaleLowerCase()
+        .toLocaleUpperCase()
+        .includes(e.target.value.toLocaleLowerCase().toLocaleUpperCase())
+    );
+    setPokemonFilter(pokemon);
+  };
+
   return (
     <>
-      <Navbar />
-      <Card pokemons={pokemonAll} />
+      <Navbar handleChange={handleChange} pokemonValue={pokemonValue} />
+      <Card pokemons={pokemonFilter} />
     </>
   );
 };

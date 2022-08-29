@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 
-type arrProps = {
+type ObjPokemon = {
   name: string;
   id: number;
   order: number;
@@ -15,11 +15,10 @@ type arrProps = {
 };
 
 type CardProps = {
-  pokemons: arrProps[];
+  pokemons: ObjPokemon[];
 };
 
 const Card: React.FC<CardProps> = ({ pokemons }) => {
-  console.log(pokemons);
   return (
     <div className="card-container">
       {pokemons?.map((pokemon) => (
