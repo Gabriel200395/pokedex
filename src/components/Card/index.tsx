@@ -1,9 +1,41 @@
-import React from 'react';
+import React from "react";
+import "./styles.css";
 
-// import { Container } from './styles';
+type arrProps = {
+  name: string;
+  id: number;
+  order: number;
+  sprites: {
+    other: {
+      dream_world: {
+        front_default: string;
+      };
+    };
+  };
+};
 
-const Card: React.FC = () => {
-  return <div />;
-}
+type CardProps = {
+  pokemons: arrProps[];
+};
+
+const Card: React.FC<CardProps> = ({ pokemons }) => {
+  console.log(pokemons);
+  return (
+    <div className="card-container">
+      {pokemons?.map((pokemon) => (
+        <div className="c-card" key={pokemon.id}>
+          <div className="card-img">
+            <img
+              src={pokemon.sprites.other.dream_world.front_default}
+              alt={pokemon.sprites.other.dream_world.front_default}
+            />
+          </div>
+
+          <p className="card-name">{pokemon.name}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default Card;

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Card from "../../components/Card";
 import Navbar from "../../components/Navbar";
 
 interface PropsPokenApi {
@@ -7,8 +8,12 @@ interface PropsPokenApi {
   id: number;
   order: number;
   sprites: {
-    back_default: string;
-  };
+    other: {
+      dream_world: {
+        front_default: string
+      }
+    }
+  }
 }
 
 const Home = () => {
@@ -36,12 +41,10 @@ const Home = () => {
     pokemonApiAll();
   }, []);
 
-  console.log(pokemonAll);
-
   return (
     <>
       <Navbar />
-      
+      <Card pokemons={pokemonAll} />
     </>
   );
 };
