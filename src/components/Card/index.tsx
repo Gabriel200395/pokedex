@@ -1,6 +1,6 @@
-import React, { CSSProperties } from "react";
-import "./styles.css";
+import React from "react";
 import { ColorRing } from "react-loader-spinner";
+import "./styles.css";
 
 type ObjPokemon = {
   name: string;
