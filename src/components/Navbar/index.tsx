@@ -12,7 +12,7 @@ const Navbar: React.FC<PropsNavabr> = ({ handleChange, pokemonValue }) => {
     <nav className="c-navbar">
       <img src={Logo} alt={Logo} />
       <div>
-        <input onChange={handleChange} value={pokemonValue} />
+        <input onChange={handleChange} value={pokemonValue} data-testid="pokemon-filter" />
         <i className="fas fa-search"></i>
       </div>
     </nav>

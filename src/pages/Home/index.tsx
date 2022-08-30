@@ -41,10 +41,9 @@ const Home = () => {
         const pokemonData = await axios.all(
           endpoints.map((endpoint) => axios.get(endpoint))
         );
-
         const response = pokemonData.map((i) => i.data);
-        setPokemonAll([...pokemonAll, ...response]);
-        setPokemonFilter([...pokemonAll, ...response]);
+      setPokemonAll([...pokemonAll, ...response]);
+      setPokemonFilter([...pokemonAll, ...response]);
       } catch (error) {
         console.log(error);
       }
@@ -55,6 +54,7 @@ const Home = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPokemonValue(e.target.value);
+
     const pokemon = pokemonAll.filter((pokemon) =>
       pokemon.name
         .toLocaleLowerCase()
