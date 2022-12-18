@@ -33,17 +33,17 @@ Irá abrir uma página no browser (se não abrir, vá até [http://localhost:300
 
 ## :heart_eyes: Features
 
-<h3 align="left">Tela inicial.</h3>
+<h3 align="left">Tela inicial 😍.</h3>
 <h4 align="left">
   <img src="./public/pagina_inicial.png" /><br>
 </h4>
 
-<h3 align="left">Buscar pokemon.</h3>
+<h3 align="left">Buscar pokemon 😎.</h3>
 <h4 align="left">
   <img src="./public/tela_filtro.png" /><br>
 </h4>
 
-<h3 align="left">Erro em buscar pokemon.</h3>
+<h3 align="left">Erro em buscar pokemon 👀.</h3>
 <h4 align="left">
   <img src="./public/tela_erro_buscar.png" /><br>
 </h4>
