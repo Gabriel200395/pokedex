@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import Home from "../pages/Home";
 import axios from "axios";
+import { notDeepEqual } from "assert";
 
 jest.mock("axios");
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -55,7 +56,7 @@ beforeEach(() =>
 );
 
 describe("Testando Pagina Home", () => {
-  test("Dados Api", async () => {
+  test("Buscando Pokemons", async () => {
     render(<Home />);
 
     const TextPokemon = pokemonDataObj.name;
@@ -67,7 +68,7 @@ describe("Testando Pagina Home", () => {
 
     expect(screen.queryByRole("img", { name: ImgPokemon })).toBeInTheDocument();
   });
-  test("Filter Pokemon", async () => {
+  test("Filtro Pokemmons", async () => {
     render(<Home />);
 
     const TextPokemon = pokemonDataObj.name;

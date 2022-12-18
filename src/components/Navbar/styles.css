@@ -32,3 +32,14 @@
   right: 30px;
   color: #263238;
 }
+
+@media (max-width: 768px) {
+  .c-navbar input {
+    width: 200px;
+    padding-left: 0px;
+  }
+
+  .c-navbar i {
+    right: 25px;
+  }
+}
