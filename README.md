@@ -19,6 +19,11 @@
 - [React Testing Lybrary](https://testing-library.com/docs/react-testing-library/intro/)  
 - [Css-Flexbox](https://www.devmedia.com.br/css3-flexbox-funcionamento-e-propriedades/29532) 
 
+## :page_facing_up: Sobre
+
+Projeto que desenvolvi com o objetivo de melhorar minhas habilidades e conhecimentos tanto em ReactJS quanto em programação Web em geral. O projeto é baseado na API do pokedex, nele você consegue visualizar os pokemons e filtrar pelo nome.
+
+No projeto tentei utilizar boas práticas de desenvolvimento, como separação de componentes, para assim facilitar a reutilização em múltiplos arquivos, desacoplamento tanto da interação com a API do Github como com a utilização de Bibliotecas, como o date-fns para trabalhar com datas e horas.
 
 
 ## 💻 Como usar
