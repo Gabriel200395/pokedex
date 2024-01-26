@@ -1,10 +1,32 @@
+import { useForm } from "react-hook-form"
+import {z} from 'zod' 
+import {zodResolver} from '@hookform/resolvers/zod'
+
 export default function SearchPokemon() {
+  
+  const validSearchPokemon =  z.object({
+    pokemon: z.string().min(1, { message: "O campo de buscar e Obrigatorio!" })
+  })
+
+  
+  type validSearchPokemonType = z.infer<typeof validSearchPokemon>
+
+
+  const {register, handleSubmit, formState: {
+    errors
+  }} = useForm<validSearchPokemonType>({
+    resolver: zodResolver(validSearchPokemon) 
+  })
+ 
   return (
     <section className='w-full flex justify-between items-center px-10 h-32'>
 
       <div>
         <p className="mb-1 text-base font-medium">Filtrar Por Pokemon:</p>
         <select className="bg-zinc-100 w-64 h-full p-3 outline-none rounded">
+        <option className="text-base">
+            Selecione
+          </option>
           <option className="text-base">
             Pokemon 1
           </option>
@@ -20,13 +42,16 @@ export default function SearchPokemon() {
         </select>
       </div>
 
-      <div className='flex w-[500px] justify-end'>
+
+
+      <form className='flex w-[500px] justify-end' onSubmit={handleSubmit((data: validSearchPokemonType) => console.log(data))}>
         <div className='relative w-full'>
           <i className="fas fa-search absolute left-3 top-4 text-xl"></i>
-          <input className='bg-zinc-100 h-full w-full rounded-l-lg pl-12 outline-none' />
+          <input className='bg-zinc-100 h-full w-full rounded-l-lg pl-12 outline-none' {...register('pokemon')} /> 
+          {errors.pokemon && <p className="text-xs italic text-red-500 mt-2">{errors.pokemon.message}</p>}
         </div>
-        <button className='bg-[#263238] text-white h-14 rounded-r-lg text-lg w-[200px]'>Buscar</button>
-      </div>
+        <button className='bg-[#263238] text-white h-14 rounded-r-lg text-lg w-[200px]' type="submit">Buscar</button>
+      </form>
     </section>
   )
 
