@@ -1,7 +1,4 @@
-import "./styles.css";
 import Logo from "../../assets/img/pokemon-logo.png";
-
-
 
 export default function Navbar(){
   return (
