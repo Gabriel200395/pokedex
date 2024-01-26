@@ -24,7 +24,9 @@ interface PropsPokemonApi {
   ];
 }
 
-const Home = () => {
+
+export default function Pokemons() {
+
   const [pokemonAll, setPokemonAll] = useState<PropsPokemonApi[]>([]);
   const [pokemonFilter, setPokemonFilter] = useState<PropsPokemonApi[]>([]);
 
@@ -42,15 +44,15 @@ const Home = () => {
           endpoints.map((endpoint) => axios.get(endpoint))
         );
         const response = pokemonData.map((i) => i.data);
-      setPokemonAll([...pokemonAll, ...response]);
-      setPokemonFilter([...pokemonAll, ...response]);
+        setPokemonAll([...pokemonAll, ...response]);
+        setPokemonFilter([...pokemonAll, ...response]);
       } catch (error) {
         console.log(error);
       }
     }
 
     pokemonApiAll();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -66,11 +68,11 @@ const Home = () => {
   };
 
   return (
-    <> 
+    <>
       <Navbar handleChange={handleChange} pokemonValue={pokemonValue} />
       <Card pokemons={pokemonFilter} />
     </>
   );
-};
 
-export default Home;
+
+}
