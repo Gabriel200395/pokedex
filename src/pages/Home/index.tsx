@@ -67,7 +67,6 @@ const Home = () => {
 
   return (
     <> 
-      <h2 className='text-blue-100'>teste</h2>
       <Navbar handleChange={handleChange} pokemonValue={pokemonValue} />
       <Card pokemons={pokemonFilter} />
     </>

@@ -1,9 +1,5 @@
-import Home from "./pages/Home";
+import Routes from "./routes";
 
-//[ok] desenvolver front-end
-//[ok] fazer conexaão com api
-//[] implementar teste unitario
-
-const App = () => <Home />
+const App = () => <Routes /> 
 
 export default App;
