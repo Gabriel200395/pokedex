@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Pokemons from '../pages/Pokemons'
+import PokemonDetails from '../pages/PokemonDetails'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 export default function Router() {
@@ -11,7 +12,7 @@ export default function Router() {
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<Pokemons />} />
-                    <Route path='/pokemon' element={<p>Pagina de Detalhes Pokemon</p>} />
+                    <Route path='/pokemon' element={<PokemonDetails />} />
                 </Routes>
             </BrowserRouter>
         </QueryClientProvider>
