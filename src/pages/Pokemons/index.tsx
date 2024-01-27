@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import { Navbar, Pokedex } from '../../components'
-import { PokemonType } from '../../types/pokemon'; 
+import { PokemonType } from '../../types/pokemon';
 import SearchPokemon from './components/SearchPokemon';
 
 
@@ -23,19 +23,27 @@ export default function Pokemons() {
     return response
   }
 
-  const { data } = useQuery({ queryKey: ['pokemons'], queryFn: getAllPokemon })
+  const { data, isFetching, error } = useQuery({ queryKey: ['pokemons'], queryFn: getAllPokemon})
 
   return (
     <>
       <Navbar />
       <SearchPokemon />
 
+      {
+        isFetching && <div>...Carregando</div>
+      }
+
+      {
+        error && <div>...Error</div>
+      }
+
       <div className='grid   md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-6  mt-10 justify-items-center gap-10 2xl:px-0 px-10'>
-         {
-          data?.map((pokemon) => { 
+        {
+          data?.map((pokemon) => {
             return <Pokedex key={pokemon.id} {...pokemon} />
           })
-         }
+        }
       </div>
 
     </>

@@ -3,7 +3,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./global.css" 
 import './index.css'
-import reportWebVitals from "./reportWebVitals"; 
+import reportWebVitals from "./reportWebVitals";  
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const root = ReactDOM.createRoot(

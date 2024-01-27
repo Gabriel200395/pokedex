@@ -3,7 +3,6 @@ import { PokemonType } from "../../types/pokemon"
 type PokemonProps = PokemonType
 
 export default function Pokedex(props: PokemonProps) {
-   console.log(props)
    return (
       <div className='bg-zinc-100 w-60 h-80 rounded flex flex-col justify-between items-center py-5 px-2'>
 
