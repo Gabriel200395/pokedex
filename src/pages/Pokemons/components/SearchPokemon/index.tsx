@@ -19,7 +19,7 @@ export default function SearchPokemon(props: SearchPokemonProps) {
       <img src={Logo} alt={Logo} className="h-16" />
       <div className="flex w-full  max-w-[720px]  justify-between ">
         <InputField storagePokemons={storagePokemons} />
-        <SelectField />
+        <SelectField storagePokemons={storagePokemons} />
       </div>
     </section>
   )

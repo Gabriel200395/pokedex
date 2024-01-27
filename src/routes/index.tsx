@@ -7,7 +7,14 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export default function Router() {
 
-    const queryClient = new QueryClient({})
+    const queryClient = new QueryClient({
+        defaultOptions: {
+            queries: {
+                refetchOnWindowFocus: false, 
+                staleTime: 1000 * 60 * 30
+            }
+        }
+    })
 
     return (
         <QueryClientProvider client={queryClient}>

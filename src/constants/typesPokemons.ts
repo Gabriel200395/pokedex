@@ -78,11 +78,4 @@ export const pokemonsTypes = [
         name: 'Fairy',
         id: 18
     },
-    {
-        name: 'Unknown',
-        id: 19
-    }, {
-        name: 'Shadow',
-        id: 20
-    },
 ]

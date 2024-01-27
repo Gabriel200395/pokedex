@@ -29,6 +29,7 @@ export default function Pokemons() {
 
   const { data, isFetching, error, } = useQuery({ queryKey: ['pokemons'], queryFn: getAllPokemon})
 
+
   return (
     <>
       <SearchPokemon   storagePokemons={storagePokemons.current}/>
