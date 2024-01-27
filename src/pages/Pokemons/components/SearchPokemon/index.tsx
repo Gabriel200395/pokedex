@@ -1,7 +1,7 @@
 import { PokemonType } from "../../../../types/pokemon"
 import Logo from '../../../../assets/img/pokemon-logo.png'
-import InputField from "./components/InputField"
-import SelectField from "./components/SelectField"
+import FormField from "./components/FormField"
+import Filters from "./components/Filters"
 
 
 type SearchPokemonProps = {
@@ -17,9 +17,9 @@ export default function SearchPokemon(props: SearchPokemonProps) {
   return (
     <section className='w-full flex justify-between items-center h-32 px-10'>
       <img src={Logo} alt={Logo} className="h-16" />
-      <div className="flex w-full  max-w-[720px]  justify-between ">
-        <InputField storagePokemons={storagePokemons} />
-        <SelectField storagePokemons={storagePokemons} />
+      <div className="flex w-full  max-w-[720px]  justify-between "> 
+      <Filters storagePokemons={storagePokemons} />
+      <FormField storagePokemons={storagePokemons} />
       </div>
     </section>
   )
