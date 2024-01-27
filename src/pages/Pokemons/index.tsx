@@ -1,12 +1,15 @@
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
-import { Navbar, Pokedex } from '../../components'
+import { Pokedex } from '../../components'
 import { PokemonType } from '../../types/pokemon';
 import SearchPokemon from './components/SearchPokemon';
+import { useRef } from 'react';
 
 
 
 export default function Pokemons() {
+  
+  const storagePokemons = useRef<PokemonType[]>([])
 
   const getAllPokemon = async (): Promise<PokemonType[]> => {
     let endpoints = [];
@@ -19,16 +22,16 @@ export default function Pokemons() {
       endpoints.map((endpoint) => axios.get(endpoint))
     );
     const response = pokemonData.map((i) => i.data);
-
+    storagePokemons.current = response
+    
     return response
   }
 
-  const { data, isFetching, error } = useQuery({ queryKey: ['pokemons'], queryFn: getAllPokemon})
+  const { data, isFetching, error, } = useQuery({ queryKey: ['pokemons'], queryFn: getAllPokemon})
 
   return (
     <>
-      <Navbar />
-      <SearchPokemon />
+      <SearchPokemon   storagePokemons={storagePokemons.current}/>
 
       {
         isFetching && <div>...Carregando</div>
@@ -38,7 +41,7 @@ export default function Pokemons() {
         error && <div>...Error</div>
       }
 
-      <div className='grid   md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-6  mt-10 justify-items-center gap-10 2xl:px-0 px-10'>
+      <div className='grid  md:grid-cols-2 lg:grid-cols-6 2xl:grid-cols-10  mt-10 justify-items-center gap-10 px-10'>
         {
           data?.map((pokemon) => {
             return <Pokedex key={pokemon.id} {...pokemon} />
