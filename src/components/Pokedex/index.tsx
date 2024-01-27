@@ -1,8 +1,9 @@
-import { PokemonType } from "../../types/pokemon"
+import { PokemonType } from "../../types/pokemon" 
+import NoImage from  '../../assets/img/no_image.png'
 
 type PokemonProps = PokemonType
 
-export default function Pokedex(props: PokemonProps) {
+export default function Pokedex(props: PokemonProps) { 
    return (
       <div className='bg-white w-52 h-80 rounded-lg flex flex-col justify-between items-center py-5 px-2'>
 
@@ -10,7 +11,7 @@ export default function Pokedex(props: PokemonProps) {
             <p className="pb-2 font-bold text-lg text-[#263238]">#{props.id}</p>
 
             <img
-               src={props.sprites.other.dream_world.front_default}
+               src={props.sprites.other.dream_world.front_default || NoImage}
                alt={props.sprites.other.dream_world.front_default}
                className="h-36"
             />
