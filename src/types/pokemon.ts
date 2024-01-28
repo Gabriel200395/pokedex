@@ -17,4 +17,7 @@ export type PokemonType = {
         };
       }
     ];
+
+    weight: number
+    height: number
   }

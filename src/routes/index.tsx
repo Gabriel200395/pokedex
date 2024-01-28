@@ -21,7 +21,7 @@ export default function Router() {
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<Pokemons />} />
-                    <Route path='/pokemon' element={<PokemonDetails />} />
+                    <Route path='/pokemon/:id' element={<PokemonDetails />} />
                 </Routes>
                 <ToastContainer />
             </BrowserRouter> 

@@ -8,35 +8,64 @@ body {
   background-color: #E4E5E3;
 }
 
-
-.rock {
-    background-color: rgb(148, 81, 81);
+ .normal {
+  background-color: #f8d5a3;
+ }
+ .rock {
+    background-color: #f8d5a3;
   }
   .ghost {
-    background-color: rgb(247, 247, 247);
+    background-color: #f5b7b1;
   }
   .electric {
-    background-color: rgb(255, 255, 161);
+    background-color: #c39bd3;
   }
   .bug {
-    background-color: #f6d6a7;
+    background-color: #aed6f1;
   }
   .poison {
-    background-color: #e0a7f6;
+    background-color: #a3e4d7;
   }
   .normal {
-    background-color: #f4f4f4;
+    background-color: #f9e79f;
   }
   .fairy {
-    background-color: rgba(255, 192, 203, 0.863);
+    background-color: #fadbd8;
   }
   .fire {
-    background-color: #fbe3df;
+    background-color: #d2b4de;
   }
   .grass {
-    background-color: #e2f9e1;
+    background-color: #a9cce3;
   }
   .water {
-    background-color: #e0f1fd;
+    background-color: #a2d9ce;
+  } 
+
+  .flying {
+    background-color: #a2d9ce;
   }
   
+  .fighting {
+    background-color: #f7dc6f;
+
+  }
+  .psychic {
+    background-color: #f7dc6f;
+  } 
+
+  .dark {
+    background-color: #f5cba7;
+  }
+
+  .ice {
+    background-color: #bb8fce;
+  }  
+
+  .steel {
+     background-color: #76d7c4;
+  }
+
+  .ground {
+     background-color: #85c1e9;
+  }
