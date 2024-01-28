@@ -9,7 +9,9 @@ import { RotatingSquare } from 'react-loader-spinner';
 
 export default function Pokemons() {
 
-  const storagePokemons = useRef<PokemonType[]>([])
+  const filterPokemonsRef = useRef<PokemonType[]>([]) 
+  const AllPokemonsRef = useRef<PokemonType[]>([])
+
 
   const getAllPokemons = async (): Promise<PokemonType[]> => {
     let endpoints = [];
@@ -21,13 +23,13 @@ export default function Pokemons() {
     const pokemonData = await axios.all(
       endpoints.map((endpoint) => axios.get(endpoint))
     );
-    const response = pokemonData.map((i) => i.data);
-    storagePokemons.current = response
+    const response = pokemonData.map((i) => i.data); 
 
+    AllPokemonsRef.current = response
     return response
   }
 
-  const { data, isFetching, error, } = useQuery({ queryKey: ['pokemons'], queryFn: getAllPokemons,})
+  const { data, isFetching, error, } = useQuery({ queryKey: ['pokemons'], queryFn: getAllPokemons, })
 
 
   if (isFetching) {
@@ -48,7 +50,7 @@ export default function Pokemons() {
   }
 
 
- if (error) {
+  if (error) {
     return (
       <div className='h-screen flex justify-center items-center'>
         <div className='p-5 rounded flex justify-center flex-col items-center'>
@@ -57,11 +59,11 @@ export default function Pokemons() {
         </div>
       </div>
     )
-  } 
+  }
 
   return (
     <>
-      <SearchPokemon storagePokemons={storagePokemons.current} />
+      <SearchPokemon filterPokemonsRef={filterPokemonsRef}  AllPokemonsRef={AllPokemonsRef}/>
       <div className='grid  md:grid-cols-2 lg:grid-cols-6 2xl:grid-cols-10  mt-10 justify-items-center gap-10 px-10'>
         {
           data?.map((pokemon) => <Pokedex key={pokemon.id} {...pokemon} />)

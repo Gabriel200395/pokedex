@@ -5,14 +5,16 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { PokemonType } from "../../../../../../types/pokemon";
 
 type SelectFieldProps = {
-    storagePokemons: PokemonType[]
+    filterPokemonsRef: React.MutableRefObject<PokemonType[]> 
+    AllPokemonsRef: React.MutableRefObject<PokemonType[]>
 }
 
+export default function Filters(props: SelectFieldProps) {
+    const { filterPokemonsRef, AllPokemonsRef } = props
 
-export default function SelectField(props: SelectFieldProps) {
-    const { storagePokemons } = props
+    const [value, setValue] = useState('0'); 
 
-    const [value, setValue] = useState('0');
+    const client = useQueryClient()
 
     const getTypesPokemons= async (id: string): Promise<PokemonType[]> => {
         const response = await axios.get<{
@@ -28,16 +30,12 @@ export default function SelectField(props: SelectFieldProps) {
         const results = await axios.all(response.data.pokemon.map((type) => axios.get(type.pokemon.url)))
         return results.map((result) => result.data)
     }
-
-
-    const client = useQueryClient()
-
-
-    const { data } = useQuery({ queryKey: ['typePokemon', value], queryFn: () => getTypesPokemons(value), enabled: value !== '0' ? true : false })
-
+    
+    const { data } = useQuery({ queryKey: ['typesPokemons', value], queryFn: () => getTypesPokemons(value), enabled: value !== '0' ? true : false })
 
     useEffect(() => {
         if (data && value !== '0') {
+            filterPokemonsRef.current = data
             client.setQueryData(['pokemons'], data)
         }
 
@@ -45,11 +43,12 @@ export default function SelectField(props: SelectFieldProps) {
     }, [data, value])
 
     const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-        const typepokemonValue = e.target.value
-        setValue(typepokemonValue)
+        const typePokemonValue = e.target.value
+        setValue(typePokemonValue)
 
-        if (typepokemonValue === '0') {
-            client.setQueryData(['pokemons'], storagePokemons)
+        if (typePokemonValue === '0') { 
+            filterPokemonsRef.current = AllPokemonsRef.current
+            client.setQueryData(['pokemons'], AllPokemonsRef.current)
         }
     } 
 

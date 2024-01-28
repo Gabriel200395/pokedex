@@ -5,28 +5,24 @@ import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 
 type FormFieldProps = {
-  storagePokemons: PokemonType[] 
+  filterPokemonsRef: React.MutableRefObject<PokemonType[]> 
 }
 
-export default function FormField(props: FormFieldProps) {
+export default function FormField(props: FormFieldProps) {  
+  
+  const {filterPokemonsRef} = props
 
-  const { storagePokemons } = props 
-
-  console.log(storagePokemons)
-
-  const client = useQueryClient();
+  const client = useQueryClient(); 
 
   const pokemons = client.getQueryState(['pokemons'])?.data as PokemonType[]
 
-
-  const { register, handleSubmit, formState: {
+  const { register, handleSubmit, formState: {                                     
     errors
   }, setError } = useForm<{pokemon: string}>()
 
   const onSubmit = (data:{pokemon: string}) => {
     const filteredPokemon = pokemons.filter((pokemon) => pokemon.name.includes(data.pokemon.toLocaleUpperCase().toLocaleLowerCase())) 
     
-   
     if(!data.pokemon){
       setError('pokemon', {message: 'O campo de buscar não pode ser vazio!'})
     }
@@ -44,9 +40,9 @@ export default function FormField(props: FormFieldProps) {
       <div className="flex">
         <input className='bg-white h-12 w-full rounded-l-lg pr-10 pl-4 outline-none' placeholder="Pesquisa por um pokemon" {...register('pokemon', {
           onChange(event: ChangeEvent<HTMLInputElement>) {
-           /*  if (event.target.value === '') {
-              client.setQueryData(['pokemons'], storagePokemons)
-            } */
+            if (event.target.value === '') {
+              client.setQueryData(['pokemons'],  filterPokemonsRef.current)
+            } 
           },
           onBlur() {
             setError('pokemon', { message: '' })

@@ -12,11 +12,10 @@ export default function PokemonDetails() {
     const client = useQueryClient()
 
     const pokemons = client.getQueryState(["pokemons"])?.data as PokemonType[]
-    const pokemon = pokemons?.find((pokemon) => pokemon.id.toString() === id)
-
+    const pokemon = pokemons?.find((pokemon) => pokemon.id.toString() === id) 
 
     return (
-        <div className='h-screen relative'>
+        <div className='h-screen bg-white  relative'>
            <Link to={'/'} className='px-10 absolute top-5'>
               <img src={logo} alt={logo} className='h-16'/>
            </Link>
