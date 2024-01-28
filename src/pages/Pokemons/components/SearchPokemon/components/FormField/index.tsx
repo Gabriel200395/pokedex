@@ -2,8 +2,7 @@ import { ChangeEvent } from "react"
 import { useQueryClient } from '@tanstack/react-query'
 import { PokemonType } from "../../../../../../types/pokemon";
 import { useForm } from "react-hook-form";
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
+import { toast } from 'react-toastify';
 
 type FormFieldProps = {
   storagePokemons: PokemonType[] 
@@ -11,27 +10,31 @@ type FormFieldProps = {
 
 export default function FormField(props: FormFieldProps) {
 
-  const { storagePokemons } = props
+  const { storagePokemons } = props 
+
+  console.log(storagePokemons)
 
   const client = useQueryClient();
 
   const pokemons = client.getQueryState(['pokemons'])?.data as PokemonType[]
 
-  type pokemonFiltersSchemaType = z.infer<typeof pokemonFiltersSchema>
-
-
-  const pokemonFiltersSchema = z.object({
-    pokemon: z.string().min(1, { message: 'Esse campo e obrigatorio!' })
-  })
 
   const { register, handleSubmit, formState: {
     errors
-  }, setError } = useForm<pokemonFiltersSchemaType>({
-    resolver: zodResolver(pokemonFiltersSchema)
-  })
+  }, setError } = useForm<{pokemon: string}>()
 
-  const onSubmit = (data: pokemonFiltersSchemaType) => {
-    const filteredPokemon = pokemons.filter((pokemon) => pokemon.name.includes(data.pokemon.toLocaleUpperCase().toLocaleLowerCase()))
+  const onSubmit = (data:{pokemon: string}) => {
+    const filteredPokemon = pokemons.filter((pokemon) => pokemon.name.includes(data.pokemon.toLocaleUpperCase().toLocaleLowerCase())) 
+    
+   
+    if(!data.pokemon){
+      setError('pokemon', {message: 'O campo de buscar não pode ser vazio!'})
+    }
+
+    if(!filteredPokemon.length){
+      return toast.error('Pokemon não existente!')
+    }
+
     client.setQueryData(['pokemons'], filteredPokemon)
   }
 
@@ -41,9 +44,9 @@ export default function FormField(props: FormFieldProps) {
       <div className="flex">
         <input className='bg-white h-12 w-full rounded-l-lg pr-10 pl-4 outline-none' placeholder="Pesquisa por um pokemon" {...register('pokemon', {
           onChange(event: ChangeEvent<HTMLInputElement>) {
-            if (event.target.value === '') {
+           /*  if (event.target.value === '') {
               client.setQueryData(['pokemons'], storagePokemons)
-            }
+            } */
           },
           onBlur() {
             setError('pokemon', { message: '' })
