@@ -21,7 +21,7 @@ export default function PokemonDetails() {
   
     return (
         <div className='h-screen bg-white w-full relative overflow-hidden'>
-            <nav className='absolute bg-zinc-100 w-full  flex  justify-center lg:justify-start py-2' onClick={() =>  client.invalidateQueries({ queryKey: ['pokemons']})}>
+            <nav className='absolute bg-[#EF5350] w-full  flex  justify-center lg:justify-start py-3' onClick={() =>  client.invalidateQueries({ queryKey: ['pokemons']})}>
             <Link to={'/'}>
                 <img src={logo} alt={logo} className='h-14'  />
             </Link>
