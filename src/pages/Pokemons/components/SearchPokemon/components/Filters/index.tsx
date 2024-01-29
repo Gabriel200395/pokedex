@@ -1,22 +1,25 @@
 import axios from "axios";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { pokemonsTypes } from "../../../../../../constants/typesPokemons";
-import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { PokemonType } from "../../../../../../types/pokemon";
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { PokemonType } from "../../../../../../types/pokemon"; 
+import {toast} from 'react-toastify'
 
-type SelectFieldProps = {
+type FiltersProps = {
     filterPokemonsRef: React.MutableRefObject<PokemonType[]> 
     AllPokemonsRef: React.MutableRefObject<PokemonType[]>
 }
 
-export default function Filters(props: SelectFieldProps) {
+export default function Filters(props: FiltersProps) {
     const { filterPokemonsRef, AllPokemonsRef } = props
 
-    const [value, setValue] = useState('0'); 
+    const [filterPokemonValue, setFilterPokemonValue] = useState('0'); 
 
     const client = useQueryClient()
+   
+   const optionsPokemons =  pokemonsTypes.map((typePokemon) => <option className="text-base text-zinc-500" value={typePokemon.id} key={typePokemon.id}>{typePokemon.name}</option>)
 
-    const getTypesPokemons= async (id: string): Promise<PokemonType[]> => {
+    const getPokemons= async (id: string): Promise<PokemonType[]> => {
         const response = await axios.get<{
             pokemon: {
                 pokemon: {
@@ -31,32 +34,31 @@ export default function Filters(props: SelectFieldProps) {
         return results.map((result) => result.data)
     }
     
-    const { data } = useQuery({ queryKey: ['typesPokemons', value], queryFn: () => getTypesPokemons(value), enabled: value !== '0' ? true : false })
-
-    useEffect(() => {
-        if (data && value !== '0') {
+    const mutation = useMutation({mutationFn: (id: string) =>  getPokemons(id), 
+        onSuccess(data){
             filterPokemonsRef.current = data
-            client.setQueryData(['pokemons'], data)
+            client.setQueryData(['pokemons'], data)  
+        }, 
+        onError(){ 
+          toast.error('Erro ao filtrar pokemon!')
         }
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [data, value])
+    })
 
     const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-        const typePokemonValue = e.target.value
-        setValue(typePokemonValue)
+        const pokemonValue = e.target.value
+        setFilterPokemonValue(pokemonValue)
 
-        if (typePokemonValue === '0') { 
-            filterPokemonsRef.current = AllPokemonsRef.current
-            client.setQueryData(['pokemons'], AllPokemonsRef.current)
-        }
+        if (pokemonValue === '0') { 
+           filterPokemonsRef.current = AllPokemonsRef.current
+           return client.setQueryData(['pokemons'], AllPokemonsRef.current)
+        } 
+
+        mutation.mutate(pokemonValue)
     } 
 
     return (
-        <select className="bg-white h-full p-3 w-[300px] outline-none rounded-lg text-[#A9A3AF]" onChange={handleChange} value={value}>
-            {
-               pokemonsTypes.map((typePokemon) => <option className="text-base text-zinc-500" value={typePokemon.id} key={typePokemon.id}>{typePokemon.name}</option>)
-            }
+        <select className="bg-white h-full p-3 w-[300px] outline-none rounded-lg text-[#A9A3AF]" onChange={handleChange} value={filterPokemonValue}>
+           {optionsPokemons}
         </select>
     )
 
