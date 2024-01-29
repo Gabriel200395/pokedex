@@ -1,6 +1,6 @@
-import { PokemonType } from "../../types/pokemon" 
-import NoImage from  '../../assets/img/no_image.png'
-import {Link} from 'react-router-dom'
+import { PokemonType } from "../../types/pokemon"
+import NoImage from '../../assets/img/no_image.png'
+import { Link } from 'react-router-dom'
 
 type PokemonProps = PokemonType
 
@@ -19,13 +19,12 @@ export default function Pokedex(props: PokemonProps) {
 
             <p className="pt-2 text-base text-[#263238]">{props.name}</p>
          </div>
-       
+
          <div className="w-full flex items-center justify-center">
-         <Link to={'/pokemon/' +  props.id} className=" text-white text-base text-center w-36 py-2 translate-x-2 rounded bg-[#263238] font-medium">
-             Details 
-         </Link>  
+            <Link to={'/pokemon/' + props.id} className=" text-white text-base text-center w-36 py-2 translate-x-2 rounded bg-[#263238] font-medium">
+               Details
+            </Link>
          </div>
-         
       </div>
    )
 }
