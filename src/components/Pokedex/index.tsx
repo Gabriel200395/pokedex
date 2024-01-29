@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 type PokemonProps = PokemonType
 
-export default function Pokedex(props: PokemonProps) { 
+export default function Pokedex(props: PokemonProps) {
    return (
       <div className='bg-white w-52 h-80 rounded-lg flex flex-col justify-between items-center py-5 px-2'>
 
