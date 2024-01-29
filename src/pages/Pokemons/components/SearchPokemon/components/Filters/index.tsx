@@ -34,7 +34,7 @@ export default function Filters(props: FiltersProps) {
         return results.map((result) => result.data)
     }
     
-    const mutation = useMutation({mutationFn: (id: string) =>  getPokemons(id), 
+    const mutation = useMutation({mutationKey: ['teste']  ,mutationFn: (id: string) =>  getPokemons(id), 
         onSuccess(data){
             filterPokemonsRef.current = data
             client.setQueryData(['pokemons'], data)  

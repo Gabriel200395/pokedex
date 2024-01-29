@@ -1,5 +1,10 @@
-## 💻 Como usar
 
+<h4 align="center">
+  <img src="./public/pokedex.gif"/><br>
+</h4>
+
+
+## 💻 Como usar
 - Clone o projeto: `git clone https://github.com/Gabriel200395/pokedex.git`
 - Entrar na pasta do projeto: `cd pokedex`
 - baixe dependências da aplicação: `yarn install`
