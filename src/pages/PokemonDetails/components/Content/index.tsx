@@ -9,6 +9,8 @@ type ContentProps = {
 export default function Content(props: ContentProps) {
     const { pokemon } = props
 
+    const pokemonsType =  pokemon?.types.map((typeItem) => <ListItem text={typeItem.type.name} title="Type" key={typeItem.slot} />)
+
     return (
         <div className={`${pokemon?.types[0].type.name} w-[600px] h-[450px] rounded-lg flex flex-col justify-between items-center px-5`}>
             <div className='text-center'>
@@ -20,9 +22,7 @@ export default function Content(props: ContentProps) {
                 <ListItem text={pokemon?.name} title="Name" />
                 <ListItem text={pokemon?.height + 'm'} title="Height" />
                 <ListItem text={pokemon?.weight + 'Kg'} title="Weight" />
-                {
-                 pokemon?.types.map((typeItem) => <ListItem text={typeItem.type.name} title="Type" key={typeItem.slot} />)
-                }
+                {pokemonsType}
             </ul>
         </div>
 
