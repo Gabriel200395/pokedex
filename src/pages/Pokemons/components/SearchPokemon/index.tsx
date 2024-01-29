@@ -18,7 +18,7 @@ export default function SearchPokemon(props: SearchPokemonProps) {
   
   return (
     <section className='flex justify-center lg:justify-between items-center h-32  py-2 lg:flex-nowrap flex-wrap mb-10'>
-      <img src={Logo} alt={Logo} className="h-14" onClick={() =>  {
+      <img src={Logo} alt={Logo} className="h-14 cursor-pointer" onClick={() =>  {
         if(filterPokemonsRef.current){
           client.setQueryData(['pokemons'],  filterPokemonsRef.current)
         }
