@@ -2,9 +2,9 @@
 
 - Clone o projeto: `git clone https://github.com/Gabriel200395/pokedex.git`
 - Entrar na pasta do projeto: `cd pokedex`
+- baixe dependências da aplicação: `yarn install`
 - Iniciar a aplicação: `yarn start`
-- baixe na aplicação: `yarn`
-- testa aplicação: `yarn test`
+
 
 Irá abrir uma página no browser (se não abrir, vá até [http://localhost:3000](http://localhost:3000/)).
 

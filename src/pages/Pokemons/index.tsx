@@ -25,7 +25,9 @@ export default function Pokemons() {
     );
     const response = pokemonData.map((i) => i.data); 
 
-    AllPokemonsRef.current = response
+    AllPokemonsRef.current = response 
+    filterPokemonsRef.current = response
+
     return response
   }
 

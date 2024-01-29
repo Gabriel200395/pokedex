@@ -58,7 +58,7 @@ export default function Filters(props: FiltersProps) {
 
 
     return (
-            <select className="bg-white h-full p-3 sm:max-w-sm  md:max-w-md   w-full outline-none rounded-lg text-[#A9A3AF]" onChange={handleChange} value={filterPokemonValue}>
+            <select className="bg-white h-full p-3 sm:max-w-sm  md:max-w-md  lg:max-w-xs  w-full outline-none rounded-lg text-[#A9A3AF]" onChange={handleChange} value={filterPokemonValue}>
            {optionsPokemons}
         </select>
     )
