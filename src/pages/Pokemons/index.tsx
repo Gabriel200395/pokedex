@@ -31,7 +31,7 @@ export default function Pokemons() {
     return response
   }
 
-  const { data, isFetching, error, refetch} = useQuery({ queryKey: ['pokemons'], queryFn: getAllPokemons, })
+  const { data, isFetching, error, refetch} = useQuery({ queryKey: ['pokemons'], queryFn: getAllPokemons})
 
 
   if (isFetching) {
