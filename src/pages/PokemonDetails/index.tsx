@@ -18,8 +18,8 @@ export default function PokemonDetails() {
     const { data: pokemon, error, isFetching } = useQuery({ queryKey: ['pokemonId', id], queryFn: () => getPokemonId(id) })
 
     return (
-        <div className='h-screen bg-white  relative'>
-            <Link to={'/'} className='px-10 absolute top-5'>
+        <div className='h-screen bg-white flex  justify-center lg:justify-start py-5 w-full relative px-10'>
+            <Link to={'/'} className='absolute'>
                 <img src={logo} alt={logo} className='h-16' />
             </Link>
 

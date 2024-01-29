@@ -29,7 +29,7 @@ export default function Pokemons() {
     return response
   }
 
-  const { data, isFetching, error, } = useQuery({ queryKey: ['pokemons'], queryFn: getAllPokemons, })
+  const { data, isFetching, error, refetch} = useQuery({ queryKey: ['pokemons'], queryFn: getAllPokemons, })
 
 
   if (isFetching) {
@@ -47,7 +47,7 @@ export default function Pokemons() {
         />
       </div>
     )
-  }
+  } 
 
 
   if (error) {
@@ -55,21 +55,22 @@ export default function Pokemons() {
       <div className='h-screen flex justify-center items-center'>
         <div className='p-5 rounded flex justify-center flex-col items-center'>
           <img src={ImgErro} alt={ImgErro} className='h-20' />
-          <h2 className='text-3xl'>Erro ao buscar os pokemons</h2>
+          <h2 className='text-3xl'>Erro ao buscar os pokemons</h2> 
+          <button className='bg-red-500 p-3 rounded mt-3 text-white font-medium' onClick={() => refetch()} type='button'>Tentar Novamente</button>
         </div>
       </div>
     )
   }
 
   return (
-    <>
+    <section className='px-10'>
       <SearchPokemon filterPokemonsRef={filterPokemonsRef}  AllPokemonsRef={AllPokemonsRef}/>
-      <div className='grid  md:grid-cols-2 lg:grid-cols-6 2xl:grid-cols-10  mt-10 justify-items-center gap-10 px-10'>
+      <div className='grid  md:grid-cols-2 lg:grid-cols-4  xl:grid-cols-5 2xl:grid-cols-8 mt-28 lg:mt-10 justify-items-center gap-10'>
         {
           data?.map((pokemon) => <Pokedex key={pokemon.id} {...pokemon} />)
         }
       </div>
-    </>
+    </section>
   );
 
 

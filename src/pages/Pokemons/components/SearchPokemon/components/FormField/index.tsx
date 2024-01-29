@@ -35,7 +35,7 @@ export default function FormField(props: FormFieldProps) {
   }
 
   return (
-    <form className='w-[400px] flex flex-col' onSubmit={handleSubmit(onSubmit)}>
+    <form className='sm:max-w-sm  md:max-w-md w-full flex flex-col my-5' onSubmit={handleSubmit(onSubmit)}>
 
       <div className="flex">
         <input className='bg-white h-12 w-full rounded-l-lg pr-10 pl-4 outline-none' placeholder="Pesquisa por um pokemon" {...register('pokemon', {
@@ -48,7 +48,7 @@ export default function FormField(props: FormFieldProps) {
             setError('pokemon', { message: '' })
           }
         })} />
-        <button className="bg-[#263238] w-48 rounded-r-lg text-white" type="submit">Buscar</button>
+        <button className="bg-[#263238] w-48  rounded-r-lg text-white" type="submit">Buscar</button>
       </div>
       {errors.pokemon?.message && <p className="text-red-400 italic">{errors.pokemon.message}</p>}
 

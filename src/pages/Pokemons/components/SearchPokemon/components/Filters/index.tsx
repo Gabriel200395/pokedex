@@ -1,9 +1,9 @@
 import axios from "axios";
 import { ChangeEvent, useState } from "react";
-import { pokemonsTypes } from "../../../../../../constants/typesPokemons";
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { PokemonType } from "../../../../../../types/pokemon"; 
 import {toast} from 'react-toastify'
+import { pokemonsTypes } from "../../../../../../constants/typesPokemons";
+import { PokemonType } from "../../../../../../types/pokemon";
 
 type FiltersProps = {
     filterPokemonsRef: React.MutableRefObject<PokemonType[]> 
@@ -56,8 +56,9 @@ export default function Filters(props: FiltersProps) {
         mutation.mutate(pokemonValue)
     } 
 
+
     return (
-        <select className="bg-white h-full p-3 w-[300px] outline-none rounded-lg text-[#A9A3AF]" onChange={handleChange} value={filterPokemonValue}>
+            <select className="bg-white h-full p-3 sm:max-w-sm  md:max-w-md   w-full outline-none rounded-lg text-[#A9A3AF]" onChange={handleChange} value={filterPokemonValue}>
            {optionsPokemons}
         </select>
     )
