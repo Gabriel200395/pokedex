@@ -1,32 +1,3 @@
-<h1 align="center">Pokedex</h1>
-<h4 align="center">
-  <img src="./public/pokemon.gif"/><br>
-</h4>
-
-<p align="center">
-  <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#page_facing_up-sobre">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-como-usar">Como usar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#features">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#pencil-autor">Autor</a>
-</p>
-
-## :wrench: Tecnologias
-
-<!--EXEMPLO:-->
-
-- [React](https://pt-br.reactjs.org/)
-- [Typescript](https://www.typescriptlang.org/)
-- [React Testing Lybrary](https://testing-library.com/docs/react-testing-library/intro/)  
-- [Css-Flexbox](https://www.devmedia.com.br/css3-flexbox-funcionamento-e-propriedades/29532) 
-
-## :page_facing_up: Sobre
-
-Projeto que desenvolvi com o objetivo de melhorar minhas habilidades e conhecimentos tanto em ReactJS quanto em programação Web em geral. O projeto é baseado na API do pokedex, nele você consegue visualizar os pokemons e filtrar pelo nome.
-
-No projeto tentei utilizar boas práticas de desenvolvimento, como separação de componentes, para assim facilitar a reutilização em múltiplos arquivos, e desacoplamento tanto da interação com a API e teste funcionais.
-
-
 ## 💻 Como usar
 
 - Clone o projeto: `git clone https://github.com/Gabriel200395/pokedex.git`
@@ -36,34 +7,6 @@ No projeto tentei utilizar boas práticas de desenvolvimento, como separação d
 - testa aplicação: `yarn test`
 
 Irá abrir uma página no browser (se não abrir, vá até [http://localhost:3000](http://localhost:3000/)).
-
-## :heart_eyes: Features
-
-<h3 align="left">Tela inicial 😍.</h3>
-<h4 align="left">
-  <img src="./public/pagina_inicial.png" /><br>
-</h4>
-
-<h3 align="left">Buscar pokemon 😎.</h3>
-<h4 align="left">
-  <img src="./public/tela_filtro.png" /><br>
-</h4>
-
-<h3 align="left">Erro em buscar pokemon 👀.</h3>
-<h4 align="left">
-  <img src="./public/tela_erro_buscar.png" /><br>
-</h4>
-
-<h3 align="left">Aplicação responsivo ❤.</h3>
-<h4 align="left">
-  <img src="./public/tela_responsiva.png" /><br>
-</h4>
-
-<h3 align="left">Testando aplicação ❤.</h3> 
-<h4 align="left">
-  <img src="./public/Tela_teste.png" /><br>
-</h4>
-## :pencil: Autor
 
 <table>
   <tr>
