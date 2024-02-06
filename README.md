@@ -1,6 +1,6 @@
 
 <h4 align="center">
-  <img src="./public/pokedex.gif"/><br>
+  <img src="./public/pokedex_project.gif"/><br>
 </h4>
 
 
